@@ -1,15 +1,24 @@
 <script>
-  import TextInput from "./components/TextInput.svelte";
-  export let name;
+  let firstName = "Irene";
+  let secondName = "Anna";
+  let fullName = "";
+  let color = "red";
+
+  $: fullName = `${firstName} ${secondName}`;
+  $: {
+    console.log(color);
+    console.log(fullName);
+  }
 </script>
 
 <main>
-  <h1>Hello {name}!</h1>
-  <TextInput id="name" type="text" label="Name"/>
-  <TextInput id="email" type="email" label="email"/>
-  <TextInput id="contactno" type="number" label="contactno"/>
-  <TextInput id="password" type="password" label="password"/>
-  <TextInput id="date" type="date" label="date"/>
+  <p>{fullName} -- {color}</p>
+  <input bind:value={firstName} />
+  <input bind:value={secondName} />
+
+  <!-- <input on:input={handleInput} value={color}/> -->
+
+  <input bind:value={color} />
 </main>
 
 <style>
